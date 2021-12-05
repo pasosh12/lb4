@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Products</title>
+    <meta charset="utf-8" http-equiv="Content-Type">
+        <SCRIPT>
+        function inform() 
+        {
+            location.href = event.srcElement.innerText + ".html";
+        }
+         </SCRIPT>
+</head>
+<body>
+    <h3>Нажмите на название продукта для более подробной информаци</h3>
+    <OBJECT id="products" CLASSID="CLSID:333C7BC4-460F-11D0-BC04-0080C7055A83" type="text/plain">
+    <PARAM NAME="RowDelim" VALUE="&#10 ASCII-код;">
+    <PARAM NAME="FieldDelim" VALUE="#">
+    <PARAM NAME="DataURL" VALUE="inf.txt">
+    <PARAM NAME="UseHeader" VALUE="true">
+    </OBJECT>
+    <table DATASRC="#products" >
+        <tr>
+            <td>
+            <div DATAFLD="CODE" DATAFORMATAS=INT></div>
+            </td>
+            <td><span DATAFLD="NAME" DATAFORMATAS=TEXT onclick="inform()"></span></td>
+            <td>
+            <div DATAFLD="PRICE" DATAFORMATAS=FLOAT></div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html> 

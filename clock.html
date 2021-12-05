@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Идущие часы</title>
+        <meta charset="utf-8">
+        <style>
+            #clock {font-size:200%; font-weight:bold} /* Формат цифр часов */
+        </style>
+        <script>
+            var MS = navigator.appVersion.indexOf("MSIE");
+            window.isIE4 = (MS > 0) && (parseInt(navigator.appVersion.substring(MS + 5, MS + 6)) >= 4); // Используется ли MS IE 4 и выше
+
+            function lead0(val)
+            {
+                return (val < 10) ? "0" + val.toString() : val; // Добавляются нули впереди при необходимости
+            }
+
+            function buildTime()
+            {
+                var time = new Date();
+                var ampm = " AM";
+                var h = time.getHours(); // Устанавливается время и индикатор времени суток (am/pm)
+                if (h > 12)
+                {
+                    h = h - 12;
+                    ampm = " PM";
+                }
+                return lead0(h) + ":" + lead0(time.getMinutes()) + ":" + lead0(time.getSeconds()) + ":" + lead0(time.getMilliseconds()) + ampm;
+            }
+            function tick()
+            {
+                document.all.clock.innerText = buildTime(); // Обновление значения на часах на текущее
+            }
+        </script>
+    </head>
+    <!-- Работает только в браузерах MS IE 4 и выше. При выгрузке удаляется таймер -->
+    <body onunload="if(null != window.tmr) clearInterval(window.tmr);" onload="if(window.isIE4) window.tmr = setInterval('tick()', 1);">
+            <h1>Цифровые часы</h1>
+            <p>
+                Запрограммировано с использование HTML.
+                Текущее время (AM/PM - до/после полудня):
+                <span id="clock">
+                    <script>
+                        document.write(buildTime());
+                    </script>
+                </span>
+            </p>
+    </body>
+</html>

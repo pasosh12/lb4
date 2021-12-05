@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>Визуальные эффекты перехода  revealtrans()</title>
+        <meta charset="utf-8">
+        <script>
+        function light_logo(type,speed) // Проявление картинки для данного типа перехода
+        {
+            ImageLogo.filters.revealtrans.Apply();
+            ImageLogo.filters.revealtrans.transition = Number(type);
+            ImageLogo.filters.revealtrans.duration = speed;
+            ImageLogo.style.visibility = "visible";
+            ImageLogo.filters.revealtrans.play();
+        }
+        </script>
+    </head>
+    <body>
+            <h3>Эффекты перехода  revealtrans()</h3>
+            <img id="ImageLogo" src="images/transit.jpg" style="filter:revealtrans();"><br><br><br>
+            <form name="frm">       
+                <input name="type" TYPE="text" value=1 size=3>
+                    <b>
+                        <big>Enter type 1...23</big>
+                    </b><br><br>
+                <input name="speed" TYPE="text" value=1 size=3>
+                    <b>
+                        <big>Speed 1...10</big>
+                    </b><br><br><br>
+                <input type="button" value="Применить" 
+                onClick='ImageLogo.style.visibility="hidden"; light_logo(frm.type.value, frm.speed.value);'>
+            </form>
+    </body>
+</html>

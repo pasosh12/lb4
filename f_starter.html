@@ -1,0 +1,39 @@
+<html>
+    <head>
+       <title>Frame</title>
+       <meta charset="utf-8">
+       <script>
+          var defSize = 25;
+          function display(f)
+          {
+             var newRows = "";
+             // Определение местоположения первого фрейма в коллекции all
+             var elFrame = document.all.tags("frame");
+             for(var intFrames = 0; intFrames < frames.length; intFrames++)
+             {
+                var curF = frames[intFrames].document;
+                if(curF.body == f.document.body)
+                {
+                   newRows += "*, "; // Предоставление всего пространства выделенному фрейму
+                   curF.all.header.style.fontSize = "200%";  // Увеличение заголовка
+                   elFrame[intFrames].scrolling = "yes"; // Включение полос прокрутки в активном фрейме путём доступа к элементу frame
+                }
+                else
+                {
+                   newRows += defSize.toString() + ", "; // Установка размера по умолчанию
+                   curF.all.header.style.fontSize = ""; // Сброс изменений размера и шрифта заголовка
+                   document.all[intFrames].scrolling = "no" // Отключение прокручивания
+                }
+             }
+             document.body.rows = newRows;
+          }
+       </script>
+    </head>
+    <frameset rows="*, *, *, *, *">
+        <frame src="frame1.html" noresize>
+        <frame src="frame2.html" noresize scrolling="No">
+        <frame src="frame3.html" noresize scrolling="No">
+        <frame src="frame4.html" noresize scrolling="No">'
+        <frame src="frame5.html" noresize scrolling="No">
+    </frameset>
+</html>

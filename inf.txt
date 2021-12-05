@@ -1,0 +1,5 @@
+CODE:INT#NAME#PRICE:FLOAT#INFORM
+1#Oracle#11#Oracle.html
+2#Azure#12#Azure.html
+3#Apple#13#Apple.html
+4#Samsung#14#Samsung.html
